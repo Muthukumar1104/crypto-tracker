@@ -42,7 +42,6 @@ const HomePage = () => {
       {favorites.length > 0 && (
         <Confetti numberOfPieces={200} recycle={false} />
       )}{" "}
-      {/* Confetti animation when a coin is favorited */}
       {loading ? (
         <SkeletonTheme baseColor="#e0e0e0" highlightColor="#f5f5f5">
           <ul className="space-y-4">
