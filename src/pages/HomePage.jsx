@@ -24,13 +24,13 @@ const HomePage = () => {
   }, [dispatch]);
 
   const onDragEnd = (result) => {
-    if (!result.destination) return; // If dropped outside, do nothing
+    if (!result.destination) return;
 
     const reorderedCoins = Array.from(coins);
-    const [movedCoin] = reorderedCoins.splice(result.source.index, 1); // Remove the item from the old position
-    reorderedCoins.splice(result.destination.index, 0, movedCoin); // Insert it into the new position
+    const [movedCoin] = reorderedCoins.splice(result.source.index, 1);
+    reorderedCoins.splice(result.destination.index, 0, movedCoin);
 
-    dispatch(reorderCoins(reorderedCoins)); // Updates Redux state
+    dispatch(reorderCoins(reorderedCoins));
   };
 
   return (

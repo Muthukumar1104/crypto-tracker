@@ -23,7 +23,7 @@ const cryptoSlice = createSlice({
       state.coins = action.payload;
     },
     reorderCoins: (state, action) => {
-      state.coins = action.payload; // Properly updates coin order in Redux state
+      state.coins = action.payload;
     },
     toggleFavorite: (state, action) => {
       const coinId = action.payload;
