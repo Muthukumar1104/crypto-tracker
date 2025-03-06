@@ -41,7 +41,8 @@ const HomePage = () => {
       </div>
       {favorites.length > 0 && (
         <Confetti numberOfPieces={200} recycle={false} />
-      )}{" "}
+      )}
+
       {loading ? (
         <SkeletonTheme baseColor="#e0e0e0" highlightColor="#f5f5f5">
           <ul className="space-y-4">
@@ -76,21 +77,21 @@ const HomePage = () => {
                         ref={provided.innerRef}
                         {...provided.draggableProps}
                         {...provided.dragHandleProps}
-                        className="p-4 bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg shadow-lg flex items-center justify-between hover:bg-gray-200 dark:hover:bg-gray-700 transition-all"
+                        className="p-4 bg-white dark:bg-gray-800 text-black dark:text-white rounded-lg shadow-lg flex items-center justify-between hover:bg-gray-200 dark:hover:bg-gray-700 transition-all cursor-pointer"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: index * 0.1 }}
                       >
                         <Link
                           to={`/coin/${coin.id}`}
-                          className="flex items-center space-x-4"
+                          className="flex items-center space-x-4 w-full"
                         >
                           <img
                             src={coin.image}
                             alt={coin.name}
                             className="w-12 h-12 rounded-full"
                           />
-                          <div>
+                          <div className="w-full">
                             <h2 className="text-xl font-semibold">
                               {coin.name}
                             </h2>
@@ -105,7 +106,10 @@ const HomePage = () => {
                               ? "bg-yellow-500"
                               : "bg-gray-300 dark:bg-gray-700"
                           }`}
-                          onClick={() => dispatch(toggleFavorite(coin.id))}
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            dispatch(toggleFavorite(coin.id));
+                          }}
                         >
                           ⭐
                         </button>
